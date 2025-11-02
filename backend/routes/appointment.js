@@ -1,6 +1,6 @@
 import express from "express";
 import Appointment from "../models/AppointmentSchema.js";
-import auth from "../middleware/auth.js";
+import {auth} from "../middleware/auth.js";
 import mongoose from "mongoose";
 
 const router = express.Router();

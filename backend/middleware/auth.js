@@ -24,4 +24,13 @@ const auth = (req, res, next) => {
   }
 };
 
-export default auth;
+const requireRole = (...allowedRoles) => {
+  return (req, res, next) => {
+    if (!req.user || !allowedRoles.includes(req.user.role)) {
+      return res.status(403).json({ message: "Access denied. Unauthorized role." });
+    }
+    next();
+  };
+};
+
+export {auth,requireRole};

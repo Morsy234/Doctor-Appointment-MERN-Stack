@@ -1,6 +1,6 @@
 import express from "express";
 import Department from "../models/Departments.js";
-import auth from "../middleware/auth.js";
+import {auth} from "../middleware/auth.js";
 import multer from "multer"
 import fs from "fs";
 import path from "path";

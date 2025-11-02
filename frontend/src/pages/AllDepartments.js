@@ -15,7 +15,7 @@ const Departments = () => {
       .get("http://localhost:5000/departments")
       .then((res) => {
         if (!isMounted) return;
-        setDepartments(res.data?.departments.slice(0,3) || []);
+        setDepartments(res.data?.departments || []);
         setError("");
       })
       .catch((err) => {
@@ -32,7 +32,7 @@ const Departments = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 py-16 mt-10 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-bold text-center mb-12 text-black">Departments</h2>
 
       {loading && (
@@ -71,14 +71,6 @@ const Departments = () => {
         </div>
       )}
 
-      <div className="flex justify-center mt-12">
-          <Link
-            to="/allDepartments"
-            className=" inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition"
-          >
-            See All Departments 
-          </Link>
-        </div>
     </div>
   );
 };

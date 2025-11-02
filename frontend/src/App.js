@@ -9,7 +9,11 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import MakeAppointment from "./pages/MakeAppointment";
 import MyAppointments from "./pages/MyAppointments";
+import AddDoctor from "./pages/AddDoctor";
+import DoctorDetail from "./pages/DoctorDetail";
 import { ToastContainer } from "react-toastify";
+import AddDepartment from "./pages/AddDepartment";
+import AllDepartments from "./pages/AllDepartments"
 
 const App = () => {
   return (
@@ -29,6 +33,12 @@ const App = () => {
         <Route path="/allDoctors" element={<Doctors />} />
         <Route path="/add-appointment" element={<MakeAppointment />} /> 
         <Route path="/my-appointments" element={<MyAppointments />} />
+        <Route path="/add-doctor" element={<AddDoctor />} />
+        <Route path="/doctors/:id" element={<DoctorDetail />} />
+        <Route path="/add-department" element={<AddDepartment/>} />
+        <Route path="/allDepartments" element={<AllDepartments />} />
+
+        
       </Routes>
     </>
   );

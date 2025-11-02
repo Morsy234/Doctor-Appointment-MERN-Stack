@@ -20,7 +20,7 @@ connectDB();
 
 app.use(cors());
 app.use("/user", userRoutes);
-app.use("/doctor", doctorRoutes);
+app.use("/doctors", doctorRoutes);
 // Ensure and serve uploads from an absolute path relative to this file
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

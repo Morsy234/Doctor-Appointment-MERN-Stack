@@ -8,11 +8,11 @@ function Doctors() {
   useEffect(() => {
     const fetchedDoctors = async () => {
       try {
-        const res = await fetch("http://localhost:5000/doctor/alldoctors");
+        const res = await fetch("http://localhost:5000/doctors/alldoctors");
         const data = await res.json();
         console.log("Fetched doctors:", data);
         if (!res.ok) throw new Error(data.message || "Failed to fetch doctors");
-        setDoctors(data.doctors.slice(0, 10)); 
+        setDoctors(data.doctors.slice(0, 3)); 
       } catch (error) {
         console.error(error);
       }
@@ -33,7 +33,7 @@ function Doctors() {
               key={doc?._id}
               className="bg-blue-50 rounded-xl shadow-md hover:shadow-xl transition p-6 flex flex-col items-center text-center"
             >
-              <Link to={`/doctor/${doc?._id}`} className="w-full">
+              <Link to={`/doctors/${doc?._id}`} className="w-full">
                 <img
                   className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-blue-100 mb-4"
                   src={`http://localhost:5000/uploads/${doc?.image}`}

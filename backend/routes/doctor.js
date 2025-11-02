@@ -1,6 +1,8 @@
 import express from "express";
 import Doctor from "../models/DoctorSchema.js";
 import multer from "multer";
+import {auth, requireRole} from "../middleware/auth.js";
+
 
 const router = express.Router();
 const storage = multer.diskStorage({
@@ -14,9 +16,13 @@ const storage = multer.diskStorage({
   })
   
   const upload = multer({ storage: storage })
+
+
+
+
   
 
-router.post("/add", upload.single('image'), async (req, res) => {
+router.post("/add", upload.single('image'), auth,requireRole,async (req, res) => {
 
     try{ const { name, speciality, experienceYears, description } = req.body;
     const image = req.file?req.file.filename:null;

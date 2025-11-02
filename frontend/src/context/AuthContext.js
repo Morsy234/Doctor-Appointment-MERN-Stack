@@ -6,12 +6,15 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // 🔁 Load user on app startup
+  // Load user on app startup
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
 
-    if (token) {
+    if (storedUser) {
+      // Prefer the stored full user data
+      setUser(JSON.parse(storedUser));
+    } else if (token) {
       try {
         const decoded = jwtDecode(token);
         setUser(decoded);
@@ -19,20 +22,18 @@ export const AuthProvider = ({ children }) => {
         console.error("Invalid token", error);
         localStorage.removeItem("token");
       }
-    } else if (storedUser) {
-      setUser(JSON.parse(storedUser));
     }
   }, []);
 
-  // ✅ Login function
+  //Login function
   const login = (token, userData) => {
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData); // update immediately
-    window.dispatchEvent(new Event("storage")); // force re-render
+    setUser(userData);
+    window.dispatchEvent(new Event("storage")); // trigger update if needed
   };
 
-  // ✅ Logout function
+  //Logout function
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -47,5 +48,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// 🔁 Custom hook
+// Custom hook
 export const useAuth = () => useContext(AuthContext);

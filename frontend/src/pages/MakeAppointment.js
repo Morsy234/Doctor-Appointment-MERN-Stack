@@ -15,7 +15,7 @@ const MakeAppointment = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/doctor/alldoctors");
+        const res = await axios.get("http://localhost:5000/doctors/allDoctors");
         setDoctors(res.data?.doctors || []);
       } catch (e) {
         // fallback, but keep UI usable

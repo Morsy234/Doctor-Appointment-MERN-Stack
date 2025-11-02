@@ -14,7 +14,7 @@ const OnCall = () => {
         or want to schedule an appointment — we’re just one click away.
       </p>
       <button
-        onClick={() => navigate("/makeappointment")}
+        onClick={() => navigate("/add-appointment")}
         className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-blue-50 transition-all"
       >
         Book an Appointment
