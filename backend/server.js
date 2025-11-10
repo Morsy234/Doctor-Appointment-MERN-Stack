@@ -35,4 +35,9 @@ app.use("/uploads", express.static(uploadsDir));
 app.use("/appointment", appointmentRoutes);
 app.use("/departments", departmentsRoutes);
 
+// Health/root route so base URL does not 404
+app.get("/", (_req, res) => {
+    res.status(200).send("OK");
+});
+
 export default app;
