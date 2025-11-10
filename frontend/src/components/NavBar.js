@@ -12,7 +12,7 @@ import {
   PlusCircle,
   Layers,
 } from "lucide-react";
-import { useAuth } from "../context/authContext.js"; // ✅ Import context
+import { useAuth } from "../context/authContext"; // ✅ Import context
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
