@@ -13,9 +13,10 @@ const app = express();
 app.use(express.json());
 
 dotenv.config();
+const PORT = process.env.PORT || 3000;
 const connectPromise = connectDB();
 
-// Ensure the database connection is established before handling requests in the Vercel serverless environment.
+// Ensure the database connection is established before handling requests
 app.use(async (_req, _res, next) => {
     await connectPromise;
     next();
@@ -35,9 +36,16 @@ app.use("/uploads", express.static(uploadsDir));
 app.use("/appointment", appointmentRoutes);
 app.use("/departments", departmentsRoutes);
 
-// Health/root route so base URL does not 404
+// Health route for uptime checks
 app.get("/", (_req, res) => {
     res.status(200).send("OK");
 });
+
+// Run the local server when not in Vercel/serverless
+if (process.env.VERCEL !== "1") {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
 
 export default app;
