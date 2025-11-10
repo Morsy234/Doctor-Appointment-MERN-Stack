@@ -18,7 +18,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/user/register", form);
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/user/register`, form);
 
       toast.success("Signup successful! Please log in.", {
         position: "top-center",

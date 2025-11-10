@@ -31,7 +31,7 @@ const AddDepartment = () => {
       }
 
 
-     const res= await axios.post("http://localhost:5000/departments/addDepartment", {name,description,image}, {
+     const res= await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/departments/addDepartment`, {name,description,image}, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 
 
+
 const Departments = () => {
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,9 +11,11 @@ const Departments = () => {
 
   useEffect(() => {
     let isMounted = true;
+    console.log(`${process.env.REACT_APP_BACKEND_BASE_URL}`)
     setLoading(true);
     axios
-      .get("http://localhost:5000/departments")
+      .get(`${process.env.REACT_APP_BACKEND_BASE_URL}/departments`)
+      // .get("http://localhost:5000/departments")
       .then((res) => {
         if (!isMounted) return;
         setDepartments(res.data?.departments.slice(0,3) || []);
@@ -47,7 +50,7 @@ const Departments = () => {
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {departments.map((d) => {
             const imgSrc = d.image
-              ? `http://localhost:5000/uploads/${d.image}`
+              ? `${process.env.REACT_APP_BACKEND_BASE_URL}/uploads/${d.image}`
               : undefined;
             return (
               <div key={d._id || d.name} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">

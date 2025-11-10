@@ -23,7 +23,7 @@ const DoctorDetail = () => {
           navigate("/login");
           return;
         }
-        const res = await axios.get(`http://localhost:5000/doctors/${id}`, {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/doctors/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -79,7 +79,7 @@ const DoctorDetail = () => {
             </div>
           )}
           <img
-            src={`http://localhost:5000/uploads/${doctor.image}`}
+            src={`${process.env.REACT_APP_BACKEND_BASE_URL}/uploads/${doctor.image}`}
             alt={doctor.name}
             className={`w-full h-full object-cover rounded-l-2xl ${
               imageLoading ? "hidden" : "block"

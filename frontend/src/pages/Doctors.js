@@ -73,7 +73,7 @@ function Doctors() {
   useEffect(() => {
     const fetchedDoctors = async () => {
       try {
-        const res = await fetch("http://localhost:5000/doctors/alldoctors");
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/doctors/alldoctors`);
         const data = await res.json();
         console.log("Fetched doctors:", data);
         if (!res.ok) throw new Error(data.message || "Failed to fetch doctors");
@@ -138,7 +138,7 @@ function Doctors() {
               <Link to={`/doctors/${doc?._id}`} className="w-full">
                 <img
                   className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-blue-100 mb-4"
-                  src={`http://localhost:5000/uploads/${doc?.image}`}
+                  src={`${process.env.REACT_APP_BACKEND_BASE_URL}/uploads/${doc?.image}`}
                   alt={doc?.name}
                 />
                 <h3 className="text-xl font-bold mb-1 text-blue-700">

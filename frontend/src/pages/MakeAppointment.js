@@ -15,7 +15,7 @@ const MakeAppointment = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/doctors/allDoctors");
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/doctors/allDoctors`);
         setDoctors(res.data?.doctors || []);
       } catch (e) {
         // fallback, but keep UI usable
@@ -39,7 +39,7 @@ const MakeAppointment = () => {
     }
     try {
       await axios.post(
-        "http://localhost:5000/appointment/createAppointment",
+        `${process.env.REACT_APP_BACKEND_BASE_URL}/appointment/createAppointment`,
         {
           doctor: formData.doctor,
           date: formData.date,

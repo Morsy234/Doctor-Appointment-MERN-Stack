@@ -21,7 +21,7 @@ const MyAppointments = () => {
           navigate("/login");
           return;
         }
-        const res = await axios.get("http://localhost:5000/appointment/getAppointments", {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/appointment/getAppointments`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("My appointments response:", res.data);

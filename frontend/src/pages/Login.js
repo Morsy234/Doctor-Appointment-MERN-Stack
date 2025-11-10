@@ -15,7 +15,7 @@ const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/user/login", {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/user/login`, {
         email,
         password,
       });

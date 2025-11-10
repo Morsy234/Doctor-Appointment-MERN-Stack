@@ -118,11 +118,12 @@ const HomePage = () => {
 
       
 
-      <Departments/>
-      <Doctors/>
-      
+<div className="w-full flex flex-col items-center justify-center">
+  <Departments/>
+  <Doctors/>
+  <OnCall/>
+</div>
 
-      <OnCall/>
     </>
   );
 };
