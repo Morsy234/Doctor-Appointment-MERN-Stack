@@ -34,7 +34,8 @@ const AddDoctor = () => {
         });
         return;
       }
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/doctors/add`, {
+     // const res = 
+      await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/doctors/add`, {
         name,
         speciality,
         experienceYears,

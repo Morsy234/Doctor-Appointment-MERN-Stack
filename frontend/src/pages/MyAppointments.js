@@ -5,11 +5,11 @@ import { toast } from "react-toastify";
 
 const MyAppointments = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    doctor: "",
-    date: "",
-    reason: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   doctor: "",
+  //   date: "",
+  //   reason: "",
+  // });
   const [appointment, setAppointment] = useState([]);
 
   useEffect(() => {
